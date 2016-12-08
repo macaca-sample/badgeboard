@@ -29,6 +29,8 @@ var ajax = function(url, successCallback, failCallback) {
 };
 var table = document.getElementById('#table');
 ajax('//api.github.com/users/macaca-sample/repos', function(list) {
+  console.log(list)
+  console.log(typeof list)
   list.forEach(function(item) {
     var row = document.createElement('tr');
     var line = document.createElement('td');
