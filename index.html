@@ -7,6 +7,7 @@
 <base target="_blank"/>
 </head>
 <body>
+  <table id="table"></table>
 <script>
 var ajax = function(url, successCallback, failCallback) {
   var request = new XMLHttpRequest();
@@ -26,8 +27,15 @@ var ajax = function(url, successCallback, failCallback) {
   request.send();
   request = null;
 };
-ajax('//api.github.com/users/macaca-sample/repos', function(d) {
-  console.log(d);
+var table = document.getElementById('#table');
+ajax('//api.github.com/users/macaca-sample/repos', function(list) {
+  list.forEach(function(item) {
+    var row = document.createElement('tr');
+    var line = document.createElement('td');
+    var name = document.createTextNode(item.name);
+    row.appendChild(line);
+    table.appendChild(row);
+  });
 });
 </script>
 </body>
