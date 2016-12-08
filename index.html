@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<title>badgeboard for macaca samples</title>
+<base target="_blank"/>
+</head>
+<body>
+<script>
+var ajax = function(url, successCallback, failCallback) {
+  var request = new XMLHttpRequest();
+  request.open('GET', url, true);
+
+  request.onreadystatechange = function() {
+    if (this.readyState === 4) {
+
+      if (this.status >= 200 && this.status < 400) {
+        successCallback(this.responseText);
+      } else {
+        failCallback();
+      }
+    }
+  };
+
+  request.send();
+  request = null;
+};
+ajax('//api.github.com/users/macaca-sample/repos', function(d) {
+  console.log(d);
+});
+</script>
+</body>
+</html>
